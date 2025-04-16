@@ -3,16 +3,17 @@ import { Preference } from "mercadopago";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { testId, userEmail } = await req.json();
+  const { testeId, userEmail } = await req.json();
 
   try {
     const preference = new Preference(mpClient);
 
     const createdPreference = await preference.create({
       body: {
-        external_reference: testId, // Isso impacta na pontuacao do Mercado Pago
+        external_reference: testeId, // Isso impacta na pontuacao do Mercado Pago
         metadata: {
-          testId, // Essa variavel é convertida para snake_case -> test_id
+          testeId, // Essa variavel é convertida para snake_case -> teste_id
+          userEmail,
         },
         ...(userEmail && {
           payer: {

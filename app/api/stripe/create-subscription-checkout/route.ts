@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // Precisamos criar um cliente NA STRIPE para ter referência dele quando for criar o portal de assinaturas
   const customerId = await getOrCreateCustomer(userId, userEmail);
 
   const metadata = {
@@ -27,8 +28,6 @@ export async function POST(req: NextRequest) {
     price,
     userId,
   };
-
-  // Precisamos criar um cliente NA STRIPE para ter referência dele quando for criar o portal
 
   try {
     const session = await stripe.checkout.sessions.create({

@@ -17,6 +17,7 @@ export const firebaseCert = cert({
 if (!getApps().length) {
   initializeApp({
     credential: firebaseCert,
+    // Para upload de files
     // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   });
 }

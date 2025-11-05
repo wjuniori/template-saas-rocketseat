@@ -15,7 +15,7 @@ export async function handleStripeSubscription(
       event.data.object.customer_details?.email;
     const userId = metadata?.userId;
 
-    if (!userId) {
+    if (!userId || !userEmail) {
       console.error("User ID or email not found");
       return;
     }

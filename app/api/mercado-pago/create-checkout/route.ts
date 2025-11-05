@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
 
     const createdPreference = await preference.create({
       body: {
-        external_reference: testeId, // Isso impacta na pontuacao do Mercado Pago
+        external_reference: testeId, // ID do pedido no seu db :: Isso impacta na pontuacao do Mercado Pago
         metadata: {
           testeId, // Essa variavel é convertida para snake_case -> teste_id
           userEmail,
